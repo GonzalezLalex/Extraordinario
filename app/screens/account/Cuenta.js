@@ -7,13 +7,13 @@ import Invitado from "./Invitados"
 export default function Cuenta(){
    const [login,setLogin]=useState(null);
 
-   useEffect(()=>{
+   useEffect(() => {
     firebase.auth().onAuthStateChanged((user)=>{
         !user ? setLogin(flase): setLogin(true);
     });
-   }, []);
+    }, []);
 
    if(login=== null)return <Text>Cargando...</Text>;
 
-   return login ? <Logged/>:<Invitado/>;
+   return login ? <Logged/> : <Invitado/>;
 }
